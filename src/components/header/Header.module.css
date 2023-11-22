@@ -1,0 +1,9 @@
+.header a {
+  color: white !important;
+  font-weight: bold;
+}
+
+.header a:hover {
+  border-bottom: 3px solid red;
+  padding: 0;
+}

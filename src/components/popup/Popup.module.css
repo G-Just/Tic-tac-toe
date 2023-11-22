@@ -1,0 +1,32 @@
+.alert {
+  max-width: max-content;
+  opacity: 0%;
+  position: absolute !important;
+  top: 1%;
+  left: 50%;
+  transform: translate(-50%);
+  animation: popup 10s forwards;
+}
+
+@keyframes popup {
+  from {
+    top: 1%;
+    opacity: 0%;
+  }
+  5% {
+    top: 5%;
+    opacity: 0%;
+  }
+  15% {
+    top: 10%;
+    opacity: 100%;
+  }
+  80% {
+    top: 10%;
+    opacity: 100%;
+  }
+  to {
+    top: 10%;
+    opacity: 0%;
+  }
+}
