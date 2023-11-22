@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Home } from "./pages/Home";
 import { Signup } from "./pages/Signup";
 import { Signin } from "./pages/Signin";
+import { Signout } from "./pages/Signout";
 import { Profile } from "./pages/Profile";
 import { Game } from "./pages/Game";
 // Components
@@ -20,7 +21,10 @@ function App() {
       <Header state={loggedIn} setState={setLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<Signup setState={setUsers} />} />
+        <Route
+          path="/signup"
+          element={<Signup data={users} setState={setUsers} />}
+        />
         <Route
           path="/signin"
           element={
@@ -29,6 +33,10 @@ function App() {
         />
         <Route path="/profile" element={<Profile data={loggedIn} />} />
         <Route path="/game" element={<Game data={loggedIn} />} />
+        <Route
+          path="/signout"
+          element={<Signout setState={setLoggedIn} state={loggedIn} />}
+        />
       </Routes>
     </>
   );

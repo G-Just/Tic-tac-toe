@@ -1,26 +1,39 @@
+//React
+import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
+//Bootstrap
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+//Components
 import { PopUp } from "../components/popup/Popup";
-import { useState } from "react";
 
 export function Signin({ data, setState, state }) {
+  const navigate = useNavigate();
+  const redirected = useLocation();
   const [popup, setPopUp] = useState(null);
+
+  // if (redirected.state === "signout") {
+  //   setPopUp(<PopUp text={"Logged Out"} type="warning" />);
+  // }
   function validate(e) {
     e.preventDefault();
-    // console.log(e.target[0].value);
     for (let i = 0; i < data.length; i++) {
       if (
-        data[i].email === e.target[0].value ||
+        data[i].email === e.target[0].value &&
         data[i].password === e.target[1].value
       ) {
         e.target[0].value = "";
         e.target[1].value = "";
-        setPopUp(<PopUp text={"Logged in, Welcome."} type="success" />);
         setState({ ...state, loggedIn: true, id: data[i].id });
+        navigate("/profile", { state: "signin" });
+      } else {
+        setPopUp(
+          <PopUp text={"Wrong email (and/or) password!"} type="danger" />
+        );
       }
     }
   }

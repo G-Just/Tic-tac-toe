@@ -26,9 +26,9 @@ export function Header({ state }) {
         <Link className="nav-link mx-3 fs-3" to="/profile">
           Profile {}
         </Link>
-        <Link className="nav-link mx-3 fs-3" to="/">
+        <Link className="nav-link mx-3 fs-3" to="/signout">
           Sign Out
-        </Link>{" "}
+        </Link>
       </Nav>
     );
   }
