@@ -6,9 +6,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
-import Badge from "react-bootstrap/Badge";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 //Components
 import { PopUp } from "../components/popup/Popup";
 import Pfp from "../assets/pfp.jpg";
@@ -43,29 +40,32 @@ export function Profile({ data, state }) {
       <Container
         className="my-5 bg-dark"
         style={{ border: "5px solid white", color: "white" }}
+        fluid={"md"}
       >
         <Row>
           <Col
-            xxl={4}
+            sm={6}
+            md={6}
+            xl={4}
             style={{
               borderRight: "5px solid white",
-              borderBottom: "5px solid white",
             }}
           >
             <Row className="justify-content-center p-3 ">
-              <Col xxl={4}>
+              <Col md={6}>
                 <Image src={Pfp} fluid roundedCircle />
               </Col>
-              <Col xxl={12} className="text-center">
+              <Col xs={12} className="text-center">
                 <h3 className="my-2">{`${getInfo().email} #${
                   getInfo().id
                 }`}</h3>
+                <p>Some data badges maybe</p>
               </Col>
             </Row>
           </Col>
           <Col>
             <Row>
-              <Col>
+              <Col className="p-3">
                 <h1 className="text-center">Stats</h1>
                 <h5>This might need to be a table</h5>
                 <h5>Games played :</h5>
@@ -74,16 +74,6 @@ export function Profile({ data, state }) {
                 <h5>W/L ratio :</h5>
                 <h5>Something else :</h5>
               </Col>
-            </Row>
-          </Col>
-        </Row>
-        <Row>
-          <Col xxl={4}>
-            <Row
-              className="justify-content-center p-3"
-              style={{ borderRight: "5px solid white" }}
-            >
-              <Col>Some data | Badges/Achievements maybe</Col>
             </Row>
           </Col>
         </Row>

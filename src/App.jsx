@@ -7,7 +7,7 @@ import { Signup } from "./pages/Signup";
 import { Signin } from "./pages/Signin";
 import { Signout } from "./pages/Signout";
 import { Profile } from "./pages/Profile";
-import { Game } from "./pages/Game";
+import { GamePage } from "./pages/GamePage";
 // Components
 import { Header } from "./components/header/Header";
 
@@ -35,7 +35,7 @@ function App() {
           path="/profile"
           element={<Profile state={loggedIn} data={users} />}
         />
-        <Route path="/game" element={<Game state={loggedIn} />} />
+        <Route path="/game" element={<GamePage state={loggedIn} />} />
         <Route
           path="/signout"
           element={<Signout setState={setLoggedIn} state={loggedIn} />}
