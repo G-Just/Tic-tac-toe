@@ -1,10 +1,23 @@
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { PopUp } from "../components/popup/Popup";
+import { useState, useEffect } from "react";
 
-export function Profile() {
+export function Profile({ state }) {
+  const [popup, setPopUp] = useState(null);
+  const navigate = useNavigate();
   const redirected = useLocation();
-  if (redirected.state === "signin") {
-    return <PopUp text={"Logged in, Welcome."} type="success" />;
-  }
-  return <h1>Profile</h1>;
+  useEffect(() => {
+    if (redirected.state === "signin") {
+      setPopUp(<PopUp text={"Logged In, Welcome"} type="success" />);
+    }
+    if (!state.loggedIn) {
+      navigate("/signin", { state: "deny" });
+    }
+  }, []);
+  return (
+    <>
+      {popup}
+      <h1>Profile</h1>
+    </>
+  );
 }
