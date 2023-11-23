@@ -21,7 +21,7 @@ export function Signin({ data, setState, state }) {
       setPopUp(<PopUp text={"Signed out"} type="warning" />);
     }
     if (redirected.state === "deny") {
-      setPopUp(<PopUp text={"Login to use this feature!"} type="warning" />);
+      setPopUp(<PopUp text={"Sign in to use this feature!"} type="warning" />);
     }
     if (redirected.state === "created") {
       setPopUp(<PopUp text={"Account created successfully"} type="success" />);

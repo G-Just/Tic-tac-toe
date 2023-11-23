@@ -1,0 +1,37 @@
+.container {
+  width: 600px !important;
+}
+
+.cell {
+  background: #073642;
+  border: 3px solid white;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.cell > p {
+  user-select: none;
+  font-size: 7rem;
+  line-height: 80%;
+  margin-bottom: 20%;
+}
+
+.cell:hover {
+  background: #0a4757;
+}
+
+.button {
+  font-size: 1.5rem;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 20px;
+  background-color: #2a9ab6;
+  color: rgb(255, 255, 255);
+}
+
+.button:hover {
+  outline: 3px solid white;
+}
