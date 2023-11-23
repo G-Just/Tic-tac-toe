@@ -1,7 +1,7 @@
 //React
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //Bootstrap
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -15,10 +15,12 @@ export function Signin({ data, setState, state }) {
   const navigate = useNavigate();
   const redirected = useLocation();
   const [popup, setPopUp] = useState(null);
+  useEffect(() => {
+    if (redirected.state === "signout") {
+      setPopUp(<PopUp text={"Logged Out"} type="warning" />);
+    }
+  }, []);
 
-  // if (redirected.state === "signout") {
-  //   setPopUp(<PopUp text={"Logged Out"} type="warning" />);
-  // }
   function validate(e) {
     e.preventDefault();
     for (let i = 0; i < data.length; i++) {
