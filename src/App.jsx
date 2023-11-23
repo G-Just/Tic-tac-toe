@@ -31,7 +31,10 @@ function App() {
             <Signin data={users} setState={setLoggedIn} state={loggedIn} />
           }
         />
-        <Route path="/profile" element={<Profile state={loggedIn} />} />
+        <Route
+          path="/profile"
+          element={<Profile state={loggedIn} data={users} />}
+        />
         <Route path="/game" element={<Game state={loggedIn} />} />
         <Route
           path="/signout"

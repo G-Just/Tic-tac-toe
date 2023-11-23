@@ -19,7 +19,7 @@ export function Home() {
   return (
     <>
       <PopUp text={`Did you know : ${catFact}`} />
-      <h1>Home</h1>
+      <h1 className="text-center mt-5 pt-5">Home (under development)</h1>;
     </>
   );
 }

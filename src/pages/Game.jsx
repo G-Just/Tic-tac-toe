@@ -9,5 +9,5 @@ export function Game({ state }) {
       navigate("/signin", { state: "deny" });
     }
   }, []);
-  return <h1>Game</h1>;
+  return <h1 className="text-center my-5">Game (under development)</h1>;
 }

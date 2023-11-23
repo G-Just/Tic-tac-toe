@@ -1,10 +1,13 @@
+//React
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+//Bootstrap
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+//Components
 import { PopUp } from "../components/popup/Popup";
 
 export function Signup({ data, setState }) {
@@ -91,7 +94,7 @@ export function Signup({ data, setState }) {
         </Row>
       </Container>
       <Container>
-        <Row className="justify-content-center">Lazy-bones? Log in with :</Row>
+        <Row className="justify-content-center">Lazy-bones? Sign in with :</Row>
         <Row className="justify-content-center">email : admin@admin.com</Row>
         <Row className="justify-content-center">password : admin</Row>
       </Container>
