@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   color: white;
+  cursor: pointer;
 }
 
 .cell > p {
@@ -30,8 +31,61 @@
   border-radius: 20px;
   background-color: #2a9ab6;
   color: rgb(255, 255, 255);
+  margin-top: 10px;
 }
 
 .button:hover {
   outline: 3px solid white;
+}
+
+.difficultySelector {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+  outline: 5px solid white;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.difficultySelector > form > select {
+  font-size: 1.5em;
+  text-align: center;
+  margin-right: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.difficultySelector > form > button {
+  font-size: 1.5em;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.difficultySelector > form > button:hover {
+  background-color: #2a9ab6;
+  border: 1px solid white;
+  color: white;
+}
+
+.changeDif {
+  position: absolute;
+  top: 10%;
+  left: 1%;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #385962;
+  color: white;
+}
+
+.changeDif:hover {
+  color: black;
+  border: 3px solid black;
+  background: white;
 }

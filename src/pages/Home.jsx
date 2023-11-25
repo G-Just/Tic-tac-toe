@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
 import { PopUp } from "../components/popup/Popup";
 
-const URL = `https://cat-fact.herokuapp.com/facts`;
+const URL = `https://api.themotivate365.com/stoic-quote`;
 
 export function Home() {
   const [catFact, assignCatFact] = useState("Loading...");
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(URL);
-      response
-        .json()
-        .then((json) =>
-          assignCatFact(json[Math.floor(Math.random() * 5)].text)
-        );
+      response.json().then((json) => assignCatFact(json.quote));
     };
     fetchData();
   }, []);
   return (
     <>
-      <PopUp text={`Did you know : ${catFact}`} />
-      <h1 className="text-center mt-5 pt-5">Home (under development)</h1>;
+      <PopUp text={`${catFact}`} />
+      <h1 className="text-center" style={{ marginTop: "200px" }}>
+        Home (under development)
+      </h1>
+      ;
     </>
   );
 }
