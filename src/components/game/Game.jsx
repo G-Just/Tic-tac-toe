@@ -56,10 +56,22 @@ export function Game() {
       }
       setPlayable(true);
     } else {
-      if (!anitSpam) {
+      if (!anitSpam && !difficulty) {
         anitSpam = true;
         setPopUp(
           <PopUp text={"You must select a difficulty!"} type="warning" />
+        );
+        setTimeout(() => {
+          setPopUp(null);
+        }, 10000);
+      }
+      if (!anitSpam && difficulty) {
+        anitSpam = true;
+        setPopUp(
+          <PopUp
+            text={"Game is over. Click restart to play again!"}
+            type="warning"
+          />
         );
         setTimeout(() => {
           setPopUp(null);
@@ -211,6 +223,7 @@ export function Game() {
   function changeDifficulty() {
     setPlayable(false);
     setDifficulty(null);
+    setWinner(null);
     setGrid([
       ["e", "e", "e"],
       ["e", "e", "e"],
@@ -270,21 +283,17 @@ export function Game() {
         <Row className="justify-content-center">
           <Col className="text-center">
             {winner ? (
-              <>
+              <div className={Style.afterGame}>
                 <h1>{winner}</h1>
-                <button className={Style.button} onClick={reset}>
-                  Restart?
-                </button>
-              </>
+                <button onClick={reset}>Restart?</button>
+                <button onClick={changeDifficulty}>Change difficulty</button>
+              </div>
             ) : (
               <></>
             )}
           </Col>
         </Row>
       </Container>
-      <button className={Style.changeDif} onClick={changeDifficulty}>
-        Change difficulty
-      </button>
     </>
   );
 }

@@ -94,7 +94,7 @@ export function Signup({ data, setState }) {
         </Row>
       </Container>
       <Container>
-        <Row className="justify-content-center">Lazy-bones? Sign in with :</Row>
+        <Row className="justify-content-center">LazyBones? Sign in with :</Row>
         <Row className="justify-content-center">email : admin@admin.com</Row>
         <Row className="justify-content-center">password : admin</Row>
       </Container>

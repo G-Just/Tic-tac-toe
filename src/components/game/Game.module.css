@@ -1,11 +1,13 @@
 .container {
-  width: 600px !important;
+  max-width: 600px !important;
+  aspect-ratio: 1/1 !important;
 }
 
 .cell {
   background: #073642;
   border: 3px solid white;
-  height: 200px;
+  max-width: 200px;
+  aspect-ratio: 1/1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,27 +17,13 @@
 
 .cell > p {
   user-select: none;
-  font-size: 7rem;
+  font-size: 8em;
   line-height: 80%;
   margin-bottom: 20%;
 }
 
 .cell:hover {
   background: #0a4757;
-}
-
-.button {
-  font-size: 1.5rem;
-  padding: 10px 30px;
-  border: none;
-  border-radius: 20px;
-  background-color: #2a9ab6;
-  color: rgb(255, 255, 255);
-  margin-top: 10px;
-}
-
-.button:hover {
-  outline: 3px solid white;
 }
 
 .difficultySelector {
@@ -47,7 +35,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  background: rgb(181, 137, 0);
   outline: 5px solid white;
   border-radius: 10px;
   padding: 30px;
@@ -59,33 +48,45 @@
   margin-right: 20px;
   padding: 10px;
   border-radius: 10px;
+  outline: 3px solid black;
 }
 .difficultySelector > form > button {
   font-size: 1.5em;
   border: none;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 10px;
-  border: 1px solid black;
+  outline: 3px solid black;
+  margin-top: 20px;
 }
 .difficultySelector > form > button:hover {
-  background-color: #2a9ab6;
-  border: 1px solid white;
-  color: white;
+  outline: 3px solid red;
 }
 
-.changeDif {
+.afterGame {
   position: absolute;
-  top: 10%;
-  left: 1%;
-  border: 3px solid white;
-  border-radius: 10px;
-  padding: 5px 10px;
-  background-color: #385962;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(181, 137, 0);
+  padding: 2rem;
   color: white;
+  outline: 5px solid white;
+  border-radius: 10px;
 }
 
-.changeDif:hover {
-  color: black;
-  border: 3px solid black;
-  background: white;
+.afterGame > h1 {
+  font-weight: bold;
+}
+
+.afterGame > button {
+  font-size: 1.5em;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 20px;
+  outline: 3px solid black;
+}
+
+.afterGame > button:hover {
+  outline: 3px solid red;
 }

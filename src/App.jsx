@@ -8,8 +8,10 @@ import { Signin } from "./pages/Signin";
 import { Signout } from "./pages/Signout";
 import { Profile } from "./pages/Profile";
 import { GamePage } from "./pages/GamePage";
+import { FailedPage } from "./pages/Failed";
 // Components
 import { Header } from "./components/header/Header";
+import { NewHeader } from "./components/header/NewHeader";
 
 function App() {
   const [users, setUsers] = useState([
@@ -18,7 +20,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState({ loggedIn: false, id: null });
   return (
     <>
-      <Header state={loggedIn} setState={setLoggedIn} />
+      <NewHeader state={loggedIn} setState={setLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -40,6 +42,7 @@ function App() {
           path="/signout"
           element={<Signout setState={setLoggedIn} state={loggedIn} />}
         />
+        <Route path="/*" element={<FailedPage />} />
       </Routes>
     </>
   );
