@@ -8,7 +8,8 @@ import Col from "react-bootstrap/Col";
 import { PopUp } from "../popup/Popup";
 import Style from "./Game.module.css";
 
-export function Game() {
+export function Game({ state, data, setData }) {
+  const users = [...data];
   //Initializing the grid
   const [grid, setGrid] = useState([
     ["e", "e", "e"],
@@ -40,17 +41,26 @@ export function Game() {
         if (winConditionCheck(localGrid) === "x") {
           setPlayable(false);
           setWinner("Player wins!");
+          users[state.id].played++;
+          users[state.id].won++;
+          setData(users);
           return;
         }
         if (winConditionCheck(localGrid) === "draw") {
           setPlayable(false);
           setWinner("Draw!");
+          users[state.id].played++;
+          users[state.id].draw++;
+          setData(users);
           return;
         }
         setGrid(aiMove(localGrid));
         if (winConditionCheck(localGrid) === "o") {
           setPlayable(false);
           setWinner("Ai wins!");
+          users[state.id].played++;
+          users[state.id].lost++;
+          setData(users);
           return;
         }
       }

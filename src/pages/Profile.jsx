@@ -25,17 +25,24 @@ export function Profile({ data, state }) {
     }
   }, []);
 
-  function getInfo() {
-    const info = {};
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].id === state.id) {
-        info.id = data[i].id;
-        info.email = data[i].email;
-        info.password = data[i].password;
+  function ratio() {
+    if (data[state.id].played > 0) {
+      if (data[state.id].won === 0) {
+        return "0%";
       }
+      if (data[state.id].lost === 0) {
+        return "100%";
+      }
+      if (data[state.id].won > 0 && data[state.id].lost > 0) {
+        return `${((data[state.id].won * 100) / data[state.id].played).toFixed(
+          0
+        )}%`;
+      }
+    } else {
+      return "-";
     }
-    return info;
   }
+
   return (
     <>
       {popup}
@@ -58,8 +65,8 @@ export function Profile({ data, state }) {
                 <Image src={Pfp} fluid roundedCircle />
               </Col>
               <Col xs={12} className="text-center">
-                <h3 className="my-2">{`${getInfo().email} #${
-                  getInfo().id
+                <h3 className="my-2">{`${data[state.id].email} #${
+                  data[state.id].id
                 }`}</h3>
                 <p>Some data badges maybe</p>
               </Col>
@@ -69,12 +76,30 @@ export function Profile({ data, state }) {
             <Row>
               <Col className="p-3">
                 <h1 className="text-center">Stats</h1>
-                <h5>This might need to be a table</h5>
-                <h5>Games played :</h5>
-                <h5>Games won :</h5>
-                <h5>Games lost :</h5>
-                <h5>W/L ratio :</h5>
-                <h5>Something else :</h5>
+                <table className="profile-table">
+                  <tbody>
+                    <tr>
+                      <td>Games played </td>
+                      <td>{data[state.id].played}</td>
+                    </tr>
+                    <tr>
+                      <td>Games won</td>
+                      <td>{data[state.id].won}</td>
+                    </tr>
+                    <tr>
+                      <td>Games lost</td>
+                      <td>{data[state.id].lost}</td>
+                    </tr>
+                    <tr>
+                      <td>Games drawn</td>
+                      <td>{data[state.id].draw}</td>
+                    </tr>
+                    <tr>
+                      <td>Win rate</td>
+                      <td>{ratio()}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </Col>
             </Row>
           </Col>

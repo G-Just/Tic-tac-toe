@@ -36,6 +36,10 @@ export function Signup({ data, setState }) {
         id: data[data.length - 1].id + 1,
         email: e.target[0].value,
         username: e.target[1].value,
+        played: 0,
+        won: 0,
+        lost: 0,
+        draw: 0,
       },
     ]);
     e.target[0].value = "";

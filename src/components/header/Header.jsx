@@ -25,7 +25,7 @@ export function Header({ state }) {
     current = (
       <Nav>
         <Link className="nav-link mx-3 fs-3" to="/profile">
-          Profile {}
+          Profile
         </Link>
         <Link className="nav-link mx-3 fs-3" to="/signout">
           Sign Out
@@ -59,6 +59,9 @@ export function Header({ state }) {
               </Link>
               <Link className="nav-link mx-3 fs-3" to="/game">
                 Game
+              </Link>
+              <Link className="nav-link mx-3 fs-3" to="/leaderboard">
+                Leaderbord
               </Link>
             </Nav>
             {current}

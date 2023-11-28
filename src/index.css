@@ -37,3 +37,10 @@ body * {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.profile-table td {
+  padding: 5px 20px;
+  font-size: 1.5em;
+  outline: 1px solid white;
+  text-align: center;
+}
