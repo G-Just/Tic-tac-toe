@@ -61,7 +61,7 @@ export function Header({ state }) {
                 Game
               </Link>
               <Link className="nav-link mx-3 fs-3" to="/leaderboard">
-                Leaderbord
+                Leaderboard
               </Link>
             </Nav>
             {current}
