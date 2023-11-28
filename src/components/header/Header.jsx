@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Offcanvas from "react-bootstrap/Offcanvas";
 //Style
 import Style from "./Header.module.css";
 
@@ -33,20 +34,36 @@ export function Header({ state }) {
     );
   }
   return (
-    <Navbar expand="lg" bg="primary" className={Style.header}>
+    <Navbar
+      key={"lg"}
+      expand={"lg"}
+      className={`bg-primary mb-3 ${Style.header}`}
+    >
       <Container fluid>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav fs-3">
-          <Nav className="me-auto">
-            <Link className="nav-link mx-3 fs-3" to="/">
-              Home
-            </Link>
-            <Link className="nav-link mx-3 fs-3" to="/game">
-              Game
-            </Link>
-          </Nav>
-          {current}
-        </Navbar.Collapse>
+        <Navbar.Brand href="/"></Navbar.Brand>
+        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${"lg"}`} />
+        <Navbar.Offcanvas
+          id={`offcanvasNavbar-expand-${"lg"}`}
+          aria-labelledby={`offcanvasNavbarLabel-expand-${"lg"}`}
+          placement="end"
+        >
+          <Offcanvas.Header closeButton className="bg-primary text-light">
+            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${"lg"}`}>
+              Menu
+            </Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Nav className="me-auto">
+              <Link className="nav-link mx-3 fs-3" to="/">
+                Home
+              </Link>
+              <Link className="nav-link mx-3 fs-3" to="/game">
+                Game
+              </Link>
+            </Nav>
+            {current}
+          </Offcanvas.Body>
+        </Navbar.Offcanvas>
       </Container>
     </Navbar>
   );

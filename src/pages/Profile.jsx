@@ -8,7 +8,9 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 //Components
 import { PopUp } from "../components/popup/Popup";
+// Assets
 import Pfp from "../assets/pfp.jpg";
+
 export function Profile({ data, state }) {
   const [popup, setPopUp] = useState(null);
   const navigate = useNavigate();

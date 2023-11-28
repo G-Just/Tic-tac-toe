@@ -11,16 +11,17 @@ import { GamePage } from "./pages/GamePage";
 import { FailedPage } from "./pages/Failed";
 // Components
 import { Header } from "./components/header/Header";
-import { NewHeader } from "./components/header/NewHeader";
+// Assets
+import Pfp from "./assets/pfp.jpg";
 
 function App() {
   const [users, setUsers] = useState([
-    { id: 0, email: "admin@admin.com", password: "admin" },
+    { id: 0, email: "admin@admin.com", username: "admin", pfp: { Pfp } },
   ]);
   const [loggedIn, setLoggedIn] = useState({ loggedIn: false, id: null });
   return (
     <>
-      <NewHeader state={loggedIn} setState={setLoggedIn} />
+      <Header state={loggedIn} setState={setLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

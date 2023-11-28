@@ -27,7 +27,7 @@ export function Signup({ data, setState }) {
       return;
     }
     if (e.target[1].value.length < 1) {
-      setPopUp(<PopUp text={"Password is required!"} type="danger" />);
+      setPopUp(<PopUp text={"Username is required!"} type="danger" />);
       return;
     }
     setState([
@@ -35,7 +35,7 @@ export function Signup({ data, setState }) {
       {
         id: data[data.length - 1].id + 1,
         email: e.target[0].value,
-        password: e.target[1].value,
+        username: e.target[1].value,
       },
     ]);
     e.target[0].value = "";
@@ -67,12 +67,12 @@ export function Signup({ data, setState }) {
                   placeholder="Enter email"
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
+              <Form.Group className="mb-3">
+                <Form.Label>Username</Form.Label>
                 <Form.Control
                   size="lg"
-                  type="password"
-                  placeholder="Password"
+                  type="username"
+                  placeholder="Enter username"
                 />
               </Form.Group>
               <Row className="justify-content-center py-4">
@@ -87,16 +87,11 @@ export function Signup({ data, setState }) {
                 </Col>
               </Row>
               <p className="text-center">
-                Don't have an account? <Link to="/signin">Sign In</Link>
+                Already have an account? <Link to="/signin">Sign In</Link>
               </p>
             </Form>
           </Col>
         </Row>
-      </Container>
-      <Container>
-        <Row className="justify-content-center">LazyBones? Sign in with :</Row>
-        <Row className="justify-content-center">email : admin@admin.com</Row>
-        <Row className="justify-content-center">password : admin</Row>
       </Container>
     </>
   );

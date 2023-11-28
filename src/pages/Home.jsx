@@ -18,7 +18,6 @@ export function Home() {
       <h1 className="text-center" style={{ marginTop: "200px" }}>
         Home (under development)
       </h1>
-      ;
     </>
   );
 }
