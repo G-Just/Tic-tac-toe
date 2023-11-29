@@ -8,7 +8,7 @@ export function GamePage({ state, data, setData }) {
   const navigate = useNavigate();
   useEffect(() => {
     if (!state.loggedIn) {
-      navigate("/signin", { state: "deny" });
+      navigate("/Tic-tac-toe/signin", { state: "deny" });
     }
   }, []);
   return <Game data={data} state={state} setData={setData} />;

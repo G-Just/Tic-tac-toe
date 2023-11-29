@@ -44,7 +44,7 @@ export function Signup({ data, setState }) {
     ]);
     e.target[0].value = "";
     e.target[1].value = "";
-    navigate("/signin", { state: "created" });
+    navigate("/Tic-tac-toe/signin", { state: "created" });
   }
   return (
     <>

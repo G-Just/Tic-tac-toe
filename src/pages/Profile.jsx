@@ -21,7 +21,7 @@ export function Profile({ data, state }) {
       setPopUp(<PopUp text={"Logged In, Welcome"} type="success" />);
     }
     if (!state.loggedIn) {
-      navigate("/signin", { state: "deny" });
+      navigate("/Tic-tac-toe/signin", { state: "deny" });
     }
   }, []);
 

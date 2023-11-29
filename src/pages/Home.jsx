@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { PopUp } from "../components/popup/Popup";
 import { Canvas } from "../components/canvas/Canvas";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 const URL = `https://api.themotivate365.com/stoic-quote`;
 
 export function Home() {

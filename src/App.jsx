@@ -33,31 +33,35 @@ function App() {
         <Route path="/Tic-tac-toe/" element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route
-          path="/signup"
+          path="/Tic-tac-toe/signup"
           element={<Signup data={users} setState={setUsers} />}
         />
         <Route
-          path="/signin"
+          path="/Tic-tac-toe/signin"
           element={
             <Signin data={users} state={loggedIn} setState={setLoggedIn} />
           }
         />
         <Route
-          path="/profile"
+          path="/Tic-tac-toe/profile"
           element={<Profile data={users} state={loggedIn} />}
         />
         <Route
-          path="/game"
+          path="/Tic-tac-toe/game"
           element={
             <GamePage data={users} setData={setUsers} state={loggedIn} />
           }
         />
-        <Route path="/leaderboard" element={<LeaderBoard data={users} />} />
         <Route
-          path="/signout"
+          path="/Tic-tac-toe/leaderboard"
+          element={<LeaderBoard data={users} />}
+        />
+        <Route
+          path="/Tic-tac-toe/signout"
           element={<Signout setState={setLoggedIn} state={loggedIn} />}
         />
         <Route path="/*" element={<FailedPage />} />
+        <Route path="/Tic-tac-toe/*" element={<FailedPage />} />
       </Routes>
     </>
   );

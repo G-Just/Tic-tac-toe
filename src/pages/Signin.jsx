@@ -54,7 +54,7 @@ export function Signin({ data, setState, state }) {
                       className="profile-selector"
                       onClick={() => {
                         setState({ ...state, loggedIn: true, id: user.id });
-                        navigate("/profile", { state: "signin" });
+                        navigate("/Tic-tac-toe/profile", { state: "signin" });
                       }}
                     >
                       <Col xs={2}>

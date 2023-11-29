@@ -13,10 +13,10 @@ export function Header({ state }) {
   if (!state.loggedIn) {
     current = (
       <Nav>
-        <Link className="nav-link mx-3 fs-3" to="/signin">
+        <Link className="nav-link mx-3 fs-3" to="/Tic-tac-toe/signin">
           Sign In
         </Link>
-        <Link className="nav-link mx-3 fs-3" to="/signup">
+        <Link className="nav-link mx-3 fs-3" to="/Tic-tac-toe/signup">
           Sign Up
         </Link>
       </Nav>
@@ -24,10 +24,10 @@ export function Header({ state }) {
   } else {
     current = (
       <Nav>
-        <Link className="nav-link mx-3 fs-3" to="/profile">
+        <Link className="nav-link mx-3 fs-3" to="/Tic-tac-toe/profile">
           Profile
         </Link>
-        <Link className="nav-link mx-3 fs-3" to="/signout">
+        <Link className="nav-link mx-3 fs-3" to="/Tic-tac-toe/signout">
           Sign Out
         </Link>
       </Nav>
@@ -50,13 +50,16 @@ export function Header({ state }) {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="me-auto">
-              <Link className="nav-link mx-3 fs-3" to="/">
+              <Link className="nav-link mx-3 fs-3" to="/Tic-tac-toe/">
                 Home
               </Link>
-              <Link className="nav-link mx-3 fs-3" to="/game">
+              <Link className="nav-link mx-3 fs-3" to="/Tic-tac-toe/game">
                 Game
               </Link>
-              <Link className="nav-link mx-3 fs-3" to="/leaderboard">
+              <Link
+                className="nav-link mx-3 fs-3"
+                to="/Tic-tac-toe/leaderboard"
+              >
                 Leaderboard
               </Link>
             </Nav>
