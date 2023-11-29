@@ -7,6 +7,10 @@ body * {
     sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .profile-selector {
   border: 1px solid white;
   border-radius: 10px;
@@ -46,8 +50,7 @@ body * {
 }
 
 #canvas {
-  position: absolute;
-  top: 75px;
   outline: 3px solid white;
   z-index: -1;
+  background: black;
 }

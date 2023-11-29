@@ -59,7 +59,14 @@
   margin-top: 20px;
 }
 .difficultySelector > form > button:hover {
-  outline: 3px solid red;
+  background: black;
+  color: white;
+  outline: 3px solid white;
+}
+.afterGame > button:hover {
+  background: black;
+  color: white;
+  outline: 3px solid white;
 }
 
 .afterGame {
@@ -85,8 +92,4 @@
   border-radius: 10px;
   margin: 20px;
   outline: 3px solid black;
-}
-
-.afterGame > button:hover {
-  outline: 3px solid red;
 }

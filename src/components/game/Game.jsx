@@ -254,14 +254,14 @@ export function Game({ state, data, setData }) {
               selectDifficulty(e);
             }}
           >
-            <select>
+            <select defaultValue={difficulty}>
               <option style={{ background: "lightblue" }} value="0">
                 Cyberpunk 2077 A.I
               </option>
               <option style={{ background: "lightgreen" }} value="1">
                 Very easy
               </option>
-              <option style={{ background: "orange" }} value="2" selected>
+              <option style={{ background: "orange" }} selected value="2">
                 Normal
               </option>
               <option style={{ background: "red" }} value="3" disabled>

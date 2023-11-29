@@ -34,11 +34,7 @@ export function Header({ state }) {
     );
   }
   return (
-    <Navbar
-      key={"lg"}
-      expand={"lg"}
-      className={`bg-primary mb-3 ${Style.header}`}
-    >
+    <Navbar key={"lg"} expand={"lg"} className={`bg-primary ${Style.header}`}>
       <Container fluid>
         <Navbar.Brand href="/"></Navbar.Brand>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${"lg"}`} />

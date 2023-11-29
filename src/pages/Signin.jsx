@@ -16,7 +16,6 @@ export function Signin({ data, setState, state }) {
   const navigate = useNavigate();
   const redirected = useLocation();
   const [popup, setPopUp] = useState(null);
-  console.log(data);
   useEffect(() => {
     if (redirected.state === "signout") {
       setPopUp(<PopUp text={"Signed out"} type="warning" />);
@@ -51,6 +50,7 @@ export function Signin({ data, setState, state }) {
                 {data.map((user) => {
                   return (
                     <Row
+                      key={state.id}
                       className="profile-selector"
                       onClick={() => {
                         setState({ ...state, loggedIn: true, id: user.id });

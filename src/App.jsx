@@ -17,8 +17,8 @@ function App() {
   const [users, setUsers] = useState([
     {
       id: 0,
-      email: "admin@admin.com",
-      username: "admin",
+      email: "guest@guest.com",
+      username: "guest",
       played: 0,
       won: 0,
       lost: 0,
