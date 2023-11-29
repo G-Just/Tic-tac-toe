@@ -36,10 +36,11 @@ export function Signup({ data, setState }) {
         id: data[data.length - 1].id + 1,
         email: e.target[0].value,
         username: e.target[1].value,
-        played: 0,
-        won: 0,
-        lost: 0,
-        draw: 0,
+        stats: {
+          vve: { played: 0, won: 0, lost: 0, draw: 0 },
+          ve: { played: 0, won: 0, lost: 0, draw: 0 },
+          norm: { played: 0, won: 0, lost: 0, draw: 0 },
+        },
       },
     ]);
     e.target[0].value = "";
@@ -65,34 +66,21 @@ export function Signup({ data, setState }) {
               </h1>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  size="lg"
-                  type="email"
-                  placeholder="Enter email"
-                />
+                <Form.Control size="lg" type="email" placeholder="Enter email" />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Username</Form.Label>
-                <Form.Control
-                  size="lg"
-                  type="username"
-                  placeholder="Enter username"
-                />
+                <Form.Control size="lg" type="username" placeholder="Enter username" />
               </Form.Group>
               <Row className="justify-content-center py-4">
                 <Col xs={7} sm={6}>
-                  <Button
-                    className="w-100 p-2 fs-4"
-                    variant="primary"
-                    type="submit"
-                  >
+                  <Button className="w-100 p-2 fs-4" variant="primary" type="submit">
                     Sign Up
                   </Button>
                 </Col>
               </Row>
               <p className="text-center">
-                Already have an account?{" "}
-                <Link to="/Tic-tac-toe/signin">Sign In</Link>
+                Already have an account? <Link to="/Tic-tac-toe/signin">Sign In</Link>
               </p>
             </Form>
           </Col>

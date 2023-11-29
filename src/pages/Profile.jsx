@@ -25,18 +25,19 @@ export function Profile({ data, state }) {
     }
   }, []);
 
-  function ratio() {
-    if (data[state.id].played > 0) {
-      if (data[state.id].won === 0) {
+  function ratio(dif) {
+    if (data[state.id].stats[dif].played > 0) {
+      if (data[state.id].stats[dif].won === 0) {
         return "0%";
       }
-      if (data[state.id].lost === 0) {
+      if (data[state.id].stats[dif].lost === 0) {
         return "100%";
       }
-      if (data[state.id].won > 0 && data[state.id].lost > 0) {
-        return `${((data[state.id].won * 100) / data[state.id].played).toFixed(
-          0
-        )}%`;
+      if (data[state.id].stats[dif].won > 0 && data[state.id].stats[dif].lost > 0) {
+        return `${(
+          (data[state.id].stats[dif].won * 100) /
+          data[state.id].stats[dif].played
+        ).toFixed(0)}%`;
       }
     } else {
       return "-";
@@ -77,26 +78,44 @@ export function Profile({ data, state }) {
               <Col className="p-3">
                 <h1 className="text-center">Stats</h1>
                 <table className="profile-table">
+                  <thead>
+                    <tr className="text-center">
+                      <th></th>
+                      <th>Very easy</th>
+                      <th>Easy</th>
+                      <th>Normal</th>
+                    </tr>
+                  </thead>
                   <tbody>
                     <tr>
-                      <td>Games played </td>
-                      <td>{data[state.id].played}</td>
+                      <td>Games played</td>
+                      <td>{data[state.id].stats.ve.played}</td>
+                      <td>{data[state.id].stats.e.played}</td>
+                      <td>{data[state.id].stats.norm.played}</td>
                     </tr>
                     <tr>
                       <td>Games won</td>
-                      <td>{data[state.id].won}</td>
+                      <td>{data[state.id].stats.ve.won}</td>
+                      <td>{data[state.id].stats.e.won}</td>
+                      <td>{data[state.id].stats.norm.won}</td>
                     </tr>
                     <tr>
                       <td>Games lost</td>
-                      <td>{data[state.id].lost}</td>
+                      <td>{data[state.id].stats.ve.lost}</td>
+                      <td>{data[state.id].stats.e.lost}</td>
+                      <td>{data[state.id].stats.norm.lost}</td>
                     </tr>
                     <tr>
                       <td>Games drawn</td>
-                      <td>{data[state.id].draw}</td>
+                      <td>{data[state.id].stats.ve.draw}</td>
+                      <td>{data[state.id].stats.e.draw}</td>
+                      <td>{data[state.id].stats.norm.draw}</td>
                     </tr>
                     <tr>
                       <td>Win rate</td>
-                      <td>{ratio()}</td>
+                      <td>{ratio("ve")}</td>
+                      <td>{ratio("e")}</td>
+                      <td>{ratio("norm")}</td>
                     </tr>
                   </tbody>
                 </table>

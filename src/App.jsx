@@ -19,10 +19,11 @@ function App() {
       id: 0,
       email: "guest@guest.com",
       username: "guest",
-      played: 0,
-      won: 0,
-      lost: 0,
-      draw: 0,
+      stats: {
+        ve: { played: 0, won: 0, lost: 0, draw: 0 },
+        e: { played: 0, won: 0, lost: 0, draw: 0 },
+        norm: { played: 0, won: 0, lost: 0, draw: 0 },
+      },
     },
   ]);
   const [loggedIn, setLoggedIn] = useState({ loggedIn: false, id: null });
@@ -38,9 +39,7 @@ function App() {
         />
         <Route
           path="/Tic-tac-toe/signin"
-          element={
-            <Signin data={users} state={loggedIn} setState={setLoggedIn} />
-          }
+          element={<Signin data={users} state={loggedIn} setState={setLoggedIn} />}
         />
         <Route
           path="/Tic-tac-toe/profile"
@@ -48,14 +47,9 @@ function App() {
         />
         <Route
           path="/Tic-tac-toe/game"
-          element={
-            <GamePage data={users} setData={setUsers} state={loggedIn} />
-          }
+          element={<GamePage data={users} setData={setUsers} state={loggedIn} />}
         />
-        <Route
-          path="/Tic-tac-toe/leaderboard"
-          element={<LeaderBoard data={users} />}
-        />
+        <Route path="/Tic-tac-toe/leaderboard" element={<LeaderBoard data={users} />} />
         <Route
           path="/Tic-tac-toe/signout"
           element={<Signout setState={setLoggedIn} state={loggedIn} />}

@@ -50,7 +50,7 @@ export function Signin({ data, setState, state }) {
                 {data.map((user) => {
                   return (
                     <Row
-                      key={state.id}
+                      key={user.id}
                       className="profile-selector"
                       onClick={() => {
                         setState({ ...state, loggedIn: true, id: user.id });
@@ -74,8 +74,7 @@ export function Signin({ data, setState, state }) {
               </Container>
             </Container>
             <p className="text-center">
-              Don't have an account?{" "}
-              <Link to="/Tic-tac-toe/signup">Sign Up</Link>
+              Don't have an account? <Link to="/Tic-tac-toe/signup">Sign Up</Link>
             </p>
           </Col>
         </Row>

@@ -20,6 +20,7 @@ export function Game({ state, data, setData }) {
   const [playable, setPlayable] = useState(false);
   const [difficulty, setDifficulty] = useState(null);
   const [popUp, setPopUp] = useState(null);
+  const memoryDifficulty = ["ve", "e", "norm"];
   //Game logic
   function reset() {
     setGrid([
@@ -41,16 +42,16 @@ export function Game({ state, data, setData }) {
         if (winConditionCheck(localGrid) === "x") {
           setPlayable(false);
           setWinner("Player wins!");
-          users[state.id].played++;
-          users[state.id].won++;
+          users[state.id].stats[memoryDifficulty[difficulty]].played++;
+          users[state.id].stats[memoryDifficulty[difficulty]].won++;
           setData(users);
           return;
         }
         if (winConditionCheck(localGrid) === "draw") {
           setPlayable(false);
           setWinner("Draw!");
-          users[state.id].played++;
-          users[state.id].draw++;
+          users[state.id].stats[memoryDifficulty[difficulty]].played++;
+          users[state.id].stats[memoryDifficulty[difficulty]].draw++;
           setData(users);
           return;
         }
@@ -58,8 +59,8 @@ export function Game({ state, data, setData }) {
         if (winConditionCheck(localGrid) === "o") {
           setPlayable(false);
           setWinner("Ai wins!");
-          users[state.id].played++;
-          users[state.id].lost++;
+          users[state.id].stats[memoryDifficulty[difficulty]].played++;
+          users[state.id].stats[memoryDifficulty[difficulty]].lost++;
           setData(users);
           return;
         }
@@ -68,9 +69,7 @@ export function Game({ state, data, setData }) {
     } else {
       if (!anitSpam && !difficulty) {
         anitSpam = true;
-        setPopUp(
-          <PopUp text={"You must select a difficulty!"} type="warning" />
-        );
+        setPopUp(<PopUp text={"You must select a difficulty!"} type="warning" />);
         setTimeout(() => {
           setPopUp(null);
         }, 10000);
@@ -78,10 +77,7 @@ export function Game({ state, data, setData }) {
       if (!anitSpam && difficulty) {
         anitSpam = true;
         setPopUp(
-          <PopUp
-            text={"Game is over. Click restart to play again!"}
-            type="warning"
-          />
+          <PopUp text={"Game is over. Click restart to play again!"} type="warning" />
         );
         setTimeout(() => {
           setPopUp(null);
@@ -93,37 +89,25 @@ export function Game({ state, data, setData }) {
   function winConditionCheck(localGrid) {
     for (let y = 0; y < localGrid.length; y++) {
       if (!localGrid[y].includes("e")) {
-        if (
-          localGrid[y][0] === localGrid[y][1] &&
-          localGrid[y][1] === localGrid[y][2]
-        ) {
+        if (localGrid[y][0] === localGrid[y][1] && localGrid[y][1] === localGrid[y][2]) {
           return localGrid[y][0];
         }
       }
     }
     for (let x = 0; x < localGrid[0].length; x++) {
       if (localGrid[0][x] !== "e") {
-        if (
-          localGrid[0][x] === localGrid[1][x] &&
-          localGrid[1][x] === localGrid[2][x]
-        ) {
+        if (localGrid[0][x] === localGrid[1][x] && localGrid[1][x] === localGrid[2][x]) {
           return localGrid[0][x];
         }
       }
     }
     if (localGrid[0][0] !== "e") {
-      if (
-        localGrid[0][0] === localGrid[1][1] &&
-        localGrid[1][1] === localGrid[2][2]
-      ) {
+      if (localGrid[0][0] === localGrid[1][1] && localGrid[1][1] === localGrid[2][2]) {
         return localGrid[0][0];
       }
     }
     if (localGrid[0][2] !== "e") {
-      if (
-        localGrid[0][2] === localGrid[1][1] &&
-        localGrid[1][1] === localGrid[2][0]
-      ) {
+      if (localGrid[0][2] === localGrid[1][1] && localGrid[1][1] === localGrid[2][0]) {
         return localGrid[0][2];
       }
     }
@@ -160,9 +144,7 @@ export function Game({ state, data, setData }) {
     }
     if (difficulty === "2") {
       for (let row = 0; row < localGrid.length; row++) {
-        temp = [...localGrid[row].reduce((acc, cur) => (acc += cur))]
-          .sort()
-          .join("");
+        temp = [...localGrid[row].reduce((acc, cur) => (acc += cur))].sort().join("");
         if (temp === "eoo" || temp === "exx") {
           localGrid[row] = localGrid[row].join("").replace("e", "o").split("");
           return localGrid;
@@ -188,10 +170,7 @@ export function Game({ state, data, setData }) {
           tempEmpty = i;
         }
         temp += localGrid[i][i];
-        if (
-          [...temp].sort().join("") === "eoo" ||
-          [...temp].sort().join("") === "exx"
-        ) {
+        if ([...temp].sort().join("") === "eoo" || [...temp].sort().join("") === "exx") {
           localGrid[tempEmpty][tempEmpty] = "o";
           return localGrid;
         }
@@ -202,10 +181,7 @@ export function Game({ state, data, setData }) {
           tempEmpty = i;
         }
         temp += localGrid[i][2 - i];
-        if (
-          [...temp].sort().join("") === "eoo" ||
-          [...temp].sort().join("") === "exx"
-        ) {
+        if ([...temp].sort().join("") === "eoo" || [...temp].sort().join("") === "exx") {
           localGrid[tempEmpty][2 - tempEmpty] = "o";
           return localGrid;
         }
@@ -256,10 +232,10 @@ export function Game({ state, data, setData }) {
           >
             <select defaultValue={difficulty}>
               <option style={{ background: "lightblue" }} value="0">
-                Cyberpunk 2077 A.I
+                Very easy
               </option>
               <option style={{ background: "lightgreen" }} value="1">
-                Very easy
+                Easy
               </option>
               <option style={{ background: "orange" }} selected value="2">
                 Normal
