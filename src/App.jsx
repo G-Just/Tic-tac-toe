@@ -30,6 +30,7 @@ function App() {
     <>
       <Header state={loggedIn} setState={setLoggedIn} />
       <Routes>
+        <Route path="/Tic-tac-toe/" element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route
           path="/signup"
