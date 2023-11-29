@@ -15,8 +15,8 @@ export function Canvas() {
       this.horizontal = horizontal;
       this.randomX = [-5, window.innerWidth + 5];
       this.randomY = [-5, 600 + 5];
-      this.randomSpeedNeg = [-4, -2];
-      this.randomSpeedPos = [2, 4];
+      this.randomSpeedNeg = [-3, -2];
+      this.randomSpeedPos = [2, 3];
       if (horizontal) {
         this.x = this.randomX[getRandomInt(0, 2)];
         this.y = Math.random() * 600;
@@ -72,7 +72,7 @@ export function Canvas() {
   }
 
   function connect(ctx) {
-    const rad = 95; //radius when the line will be drawn
+    const rad = 100; //radius when the line will be drawn
     for (let a = 0; a < dots.length; a++) {
       for (let b = a; b < dots.length; b++) {
         const dx = dots[a].x - dots[b].x;
@@ -112,7 +112,7 @@ export function Canvas() {
     if (!requestId) {
       setTimeout(() => {
         requestId = window.requestAnimationFrame(addDots);
-      }, 1000 / 15);
+      }, 1000 / 30);
     }
   }
 
@@ -137,7 +137,7 @@ export function Canvas() {
       connect(ctx);
       setTimeout(() => {
         requestAnimationFrame(animate);
-      }, 1000 / 30);
+      }, 1000 / 60);
     }
     requestAnimationFrame(animate);
   }, []);
