@@ -91,7 +91,8 @@ export function Signup({ data, setState }) {
                 </Col>
               </Row>
               <p className="text-center">
-                Already have an account? <Link to="/signin">Sign In</Link>
+                Already have an account?{" "}
+                <Link to="/Tic-tac-toe/signin">Sign In</Link>
               </p>
             </Form>
           </Col>
