@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { PopUp } from "../components/popup/Popup";
-
+import { Canvas } from "../components/canvas/Canvas";
 const URL = `https://api.themotivate365.com/stoic-quote`;
 
 export function Home() {
@@ -15,9 +15,13 @@ export function Home() {
   return (
     <>
       <PopUp text={`${catFact}`} />
-      <h1 className="text-center" style={{ marginTop: "200px" }}>
-        Home (under development)
+      <h1
+        className="text-center"
+        style={{ marginTop: "200px", color: "white", fontSize: "9em" }}
+      >
+        Home
       </h1>
+      <Canvas />
     </>
   );
 }
