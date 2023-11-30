@@ -1,4 +1,4 @@
-.container {
+.gameContainer {
   max-width: 600px !important;
   aspect-ratio: 1/1 !important;
 }
@@ -26,70 +26,45 @@
   background: #0a4757;
 }
 
-.difficultySelector {
+.selector {
   position: absolute;
-  top: 30%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  top: 20%;
+  transform: translate(-50%);
+  /* From https://css.glass */
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(8.4px);
   color: white;
-  background: rgb(181, 137, 0);
-  outline: 5px solid white;
-  border-radius: 10px;
-  padding: 30px;
+  border: 2px solid white;
+  padding: 20px;
 }
 
-.difficultySelector > form > select {
-  font-size: 1.5em;
-  text-align: center;
-  margin-right: 20px;
-  padding: 10px;
-  border-radius: 10px;
-  outline: 3px solid black;
+.selector h1 {
+  font-size: clamp(40px, 5vw, 6rem);
+  margin-bottom: 20px;
 }
-.difficultySelector > form > button {
-  font-size: 1.5em;
+
+.selector select {
   border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  outline: 3px solid black;
-  margin-top: 20px;
-}
-.difficultySelector > form > button:hover {
-  background: black;
-  color: white;
-  outline: 3px solid white;
-}
-.afterGame > button:hover {
-  background: black;
-  color: white;
-  outline: 3px solid white;
-}
-
-.afterGame {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(181, 137, 0);
-  padding: 2rem;
-  color: white;
-  outline: 5px solid white;
-  border-radius: 10px;
-}
-
-.afterGame > h1 {
-  font-weight: bold;
-}
-
-.afterGame > button {
-  font-size: 1.5em;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 5px;
   margin: 20px;
-  outline: 3px solid black;
+  font-size: clamp(20px, 3vw, 2rem);
+  border-radius: 10px;
+}
+
+.selector button {
+  border: none;
+  padding: 5px 30px;
+  margin: 20px;
+  font-size: clamp(40px, 4vw, 3rem);
+  border-radius: 10px;
+  outline: 3px solid white;
+}
+
+.selector button:hover {
+  background-color: black;
+  color: white;
 }

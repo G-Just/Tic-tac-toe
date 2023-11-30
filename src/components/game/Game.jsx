@@ -58,7 +58,7 @@ export function Game({ state, data, setData }) {
         setGrid(aiMove(localGrid));
         if (winConditionCheck(localGrid) === "o") {
           setPlayable(false);
-          setWinner("Ai wins!");
+          setWinner("A.I wins!");
           users[state.id].stats[memoryDifficulty[difficulty]].played++;
           users[state.id].stats[memoryDifficulty[difficulty]].lost++;
           setData(users);
@@ -223,32 +223,55 @@ export function Game({ state, data, setData }) {
       {difficulty ? (
         ""
       ) : (
-        <div className={Style.difficultySelector}>
-          <h1>Select difficulty</h1>
-          <form
-            onSubmit={(e) => {
-              selectDifficulty(e);
-            }}
-          >
-            <select defaultValue={difficulty}>
-              <option style={{ background: "lightblue" }} value="0">
-                Very easy
-              </option>
-              <option style={{ background: "lightgreen" }} value="1">
-                Easy
-              </option>
-              <option style={{ background: "orange" }} selected value="2">
-                Normal
-              </option>
-              <option style={{ background: "red" }} value="3" disabled>
-                Unbeatable (coming soon)
-              </option>
-            </select>
-            <button>Select</button>
-          </form>
+        <div className={Style.selector}>
+          <Row className="text-center">
+            <h1>Select difficulty</h1>
+          </Row>
+          <Row className="text-center">
+            <form
+              onSubmit={(e) => {
+                selectDifficulty(e);
+              }}
+            >
+              <select defaultValue={difficulty}>
+                <option style={{ background: "lightblue" }} value="0">
+                  Very easy
+                </option>
+                <option style={{ background: "lightgreen" }} value="1">
+                  Easy
+                </option>
+                <option style={{ background: "orange" }} selected value="2">
+                  Normal
+                </option>
+                <option style={{ background: "red" }} value="3" disabled>
+                  Unbeatable (coming soon)
+                </option>
+              </select>
+              <Row>
+                <Col>
+                  <button>Select</button>
+                </Col>
+              </Row>
+            </form>
+          </Row>
         </div>
       )}
-      <Container className={`py-5 ${Style.container}`}>
+      {winner ? (
+        <div className={Style.selector}>
+          <Row className="text-center">
+            <h1>{winner}</h1>
+          </Row>
+          <Row className="text-center">
+            <Col>
+              <button onClick={reset}>Restart?</button>
+              <button onClick={changeDifficulty}>Change difficulty</button>
+            </Col>
+          </Row>
+        </div>
+      ) : (
+        ""
+      )}
+      <Container className={`py-5 ${Style.gameContainer}`}>
         {grid.map((row, rowIndex) => {
           return (
             <Row key={rowIndex}>
@@ -264,21 +287,6 @@ export function Game({ state, data, setData }) {
             </Row>
           );
         })}
-      </Container>
-      <Container>
-        <Row className="justify-content-center">
-          <Col className="text-center">
-            {winner ? (
-              <div className={Style.afterGame}>
-                <h1>{winner}</h1>
-                <button onClick={reset}>Restart?</button>
-                <button onClick={changeDifficulty}>Change difficulty</button>
-              </div>
-            ) : (
-              <></>
-            )}
-          </Col>
-        </Row>
       </Container>
     </>
   );
