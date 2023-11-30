@@ -37,8 +37,8 @@ export function Signup({ data, setState }) {
         email: e.target[0].value,
         username: e.target[1].value,
         stats: {
-          vve: { played: 0, won: 0, lost: 0, draw: 0 },
           ve: { played: 0, won: 0, lost: 0, draw: 0 },
+          e: { played: 0, won: 0, lost: 0, draw: 0 },
           norm: { played: 0, won: 0, lost: 0, draw: 0 },
         },
       },

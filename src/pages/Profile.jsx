@@ -10,6 +10,7 @@ import Image from "react-bootstrap/Image";
 import { PopUp } from "../components/popup/Popup";
 // Assets
 import Pfp from "../assets/pfp.jpg";
+import { Badges } from "../components/badges/Badges";
 
 export function Profile({ data, state }) {
   const [popup, setPopUp] = useState(null);
@@ -66,10 +67,10 @@ export function Profile({ data, state }) {
                 <Image src={Pfp} fluid roundedCircle />
               </Col>
               <Col xs={12} className="text-center">
-                <h3 className="my-2">{`${data[state.id].email} #${
+                <h3 className="my-2 mb-3">{`${data[state.id].email} #${
                   data[state.id].id
                 }`}</h3>
-                <p>Some data badges maybe</p>
+                <Badges user={data[state.id]} />
               </Col>
             </Row>
           </Col>
