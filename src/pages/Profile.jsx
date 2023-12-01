@@ -20,6 +20,7 @@ export function Profile({ data, state }) {
   useEffect(() => {
     if (redirected.state === "signin") {
       setPopUp(<PopUp text={"Logged In, Welcome"} type="success" />);
+      redirected.state = null;
     }
     if (!state.loggedIn) {
       navigate("/Tic-tac-toe/signin", { state: "deny" });
@@ -28,10 +29,16 @@ export function Profile({ data, state }) {
 
   function ratio(dif) {
     if (data[state.id].stats[dif].played > 0) {
-      if (data[state.id].stats[dif].won === 0) {
+      if (
+        data[state.id].stats[dif].won === 0 &&
+        data[state.id].stats[dif].lost > data[state.id].stats[dif].won
+      ) {
         return "0%";
       }
-      if (data[state.id].stats[dif].lost === 0) {
+      if (
+        data[state.id].stats[dif].lost === 0 &&
+        data[state.id].stats[dif].won > data[state.id].stats[dif].lost
+      ) {
         return "100%";
       }
       if (data[state.id].stats[dif].won > 0 && data[state.id].stats[dif].lost > 0) {
@@ -40,7 +47,8 @@ export function Profile({ data, state }) {
           data[state.id].stats[dif].played
         ).toFixed(0)}%`;
       }
-    } else {
+    }
+    if (data[state.id].stats[dif].won === 0 && data[state.id].stats[dif].lost === 0) {
       return "-";
     }
   }
@@ -85,6 +93,7 @@ export function Profile({ data, state }) {
                       <th>Very easy</th>
                       <th>Easy</th>
                       <th>Normal</th>
+                      <th>Unbeatable</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -93,30 +102,35 @@ export function Profile({ data, state }) {
                       <td>{data[state.id].stats.ve.played}</td>
                       <td>{data[state.id].stats.e.played}</td>
                       <td>{data[state.id].stats.norm.played}</td>
+                      <td>{data[state.id].stats.max.played}</td>
                     </tr>
                     <tr>
                       <td>Games won</td>
                       <td>{data[state.id].stats.ve.won}</td>
                       <td>{data[state.id].stats.e.won}</td>
                       <td>{data[state.id].stats.norm.won}</td>
+                      <td>{data[state.id].stats.max.won}</td>
                     </tr>
                     <tr>
                       <td>Games lost</td>
                       <td>{data[state.id].stats.ve.lost}</td>
                       <td>{data[state.id].stats.e.lost}</td>
                       <td>{data[state.id].stats.norm.lost}</td>
+                      <td>{data[state.id].stats.max.lost}</td>
                     </tr>
                     <tr>
                       <td>Games drawn</td>
                       <td>{data[state.id].stats.ve.draw}</td>
                       <td>{data[state.id].stats.e.draw}</td>
                       <td>{data[state.id].stats.norm.draw}</td>
+                      <td>{data[state.id].stats.max.draw}</td>
                     </tr>
                     <tr>
                       <td>Win rate</td>
                       <td>{ratio("ve")}</td>
                       <td>{ratio("e")}</td>
                       <td>{ratio("norm")}</td>
+                      <td>{ratio("max")}</td>
                     </tr>
                   </tbody>
                 </table>

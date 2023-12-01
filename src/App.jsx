@@ -1,6 +1,6 @@
 //React
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //Pages
 import { Home } from "./pages/Home";
 import { Signup } from "./pages/Signup";
@@ -14,18 +14,29 @@ import { FailedPage } from "./pages/Failed";
 import { Header } from "./components/header/Header";
 
 function App() {
-  const [users, setUsers] = useState([
-    {
-      id: 0,
-      email: "guest@guest.com",
-      username: "guest",
-      stats: {
-        ve: { played: 0, won: 0, lost: 0, draw: 0 },
-        e: { played: 0, won: 0, lost: 0, draw: 0 },
-        norm: { played: 0, won: 0, lost: 0, draw: 0 },
-      },
-    },
-  ]);
+  const getUsers = localStorage.getItem("TIC_users");
+  const [users, setUsers] = useState(
+    getUsers
+      ? JSON.parse(getUsers)
+      : [
+          {
+            id: 0,
+            email: "guest@guest.com",
+            username: "guest",
+            stats: {
+              ve: { played: 0, won: 0, lost: 0, draw: 0 },
+              e: { played: 0, won: 0, lost: 0, draw: 0 },
+              norm: { played: 0, won: 0, lost: 0, draw: 0 },
+              max: { played: 0, won: 0, lost: 0, draw: 0 },
+            },
+          },
+        ]
+  );
+
+  useEffect(() => {
+    localStorage.setItem("TIC_users", JSON.stringify(users));
+  }, [users]);
+
   const [loggedIn, setLoggedIn] = useState({ loggedIn: false, id: null });
   return (
     <>

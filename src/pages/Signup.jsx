@@ -40,6 +40,7 @@ export function Signup({ data, setState }) {
           ve: { played: 0, won: 0, lost: 0, draw: 0 },
           e: { played: 0, won: 0, lost: 0, draw: 0 },
           norm: { played: 0, won: 0, lost: 0, draw: 0 },
+          max: { played: 0, won: 0, lost: 0, draw: 0 },
         },
       },
     ]);

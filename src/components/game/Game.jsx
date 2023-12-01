@@ -7,6 +7,9 @@ import Col from "react-bootstrap/Col";
 //Components
 import { PopUp } from "../popup/Popup";
 import Style from "./Game.module.css";
+//A.I api
+import Minimax from "tic-tac-toe-minimax";
+const { ComputerMove } = Minimax;
 
 export function Game({ state, data, setData }) {
   const users = [...data];
@@ -20,7 +23,7 @@ export function Game({ state, data, setData }) {
   const [playable, setPlayable] = useState(false);
   const [difficulty, setDifficulty] = useState(null);
   const [popUp, setPopUp] = useState(null);
-  const memoryDifficulty = ["ve", "e", "norm"];
+  const memoryDifficulty = ["ve", "e", "norm", "max"];
   //Game logic
   function reset() {
     setGrid([
@@ -197,6 +200,14 @@ export function Game({ state, data, setData }) {
       return localGrid;
     }
     if (difficulty === "3") {
+      const convertedGrid = localGrid
+        .flat()
+        .map((cell, iter) => (cell === "e" ? iter : cell));
+      const symbols = { huPlayer: "x", aiPlayer: "o" };
+      const nextMove = ComputerMove(convertedGrid, symbols, "Hard");
+      convertedGrid[nextMove] = "o";
+      localGrid[Math.floor(nextMove / 3)][nextMove % 3] = "o";
+      return localGrid;
     }
   }
 
@@ -243,8 +254,8 @@ export function Game({ state, data, setData }) {
                 <option style={{ background: "orange" }} selected value="2">
                   Normal
                 </option>
-                <option style={{ background: "red" }} value="3" disabled>
-                  Unbeatable (coming soon)
+                <option style={{ background: "red" }} value="3">
+                  Unbeatable
                 </option>
               </select>
               <Row>
