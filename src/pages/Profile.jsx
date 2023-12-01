@@ -22,6 +22,7 @@ export function Profile({ data, state }) {
       setPopUp(<PopUp text={"Logged In, Welcome"} type="success" />);
       redirected.state = null;
     }
+
     if (!state.loggedIn) {
       navigate("/Tic-tac-toe/signin", { state: "deny" });
     }

@@ -15,14 +15,15 @@ import { Header } from "./components/header/Header";
 
 function App() {
   const getUsers = localStorage.getItem("TIC_users");
+  const getSession = localStorage.getItem("TIC_session");
   const [users, setUsers] = useState(
     getUsers
       ? JSON.parse(getUsers)
       : [
           {
             id: 0,
-            email: "guest@guest.com",
-            username: "guest",
+            email: "Public",
+            username: "Public",
             stats: {
               ve: { played: 0, won: 0, lost: 0, draw: 0 },
               e: { played: 0, won: 0, lost: 0, draw: 0 },
@@ -32,12 +33,18 @@ function App() {
           },
         ]
   );
+  const [loggedIn, setLoggedIn] = useState(
+    getSession ? JSON.parse(getSession) : { loggedIn: false, id: null }
+  );
 
   useEffect(() => {
     localStorage.setItem("TIC_users", JSON.stringify(users));
   }, [users]);
 
-  const [loggedIn, setLoggedIn] = useState({ loggedIn: false, id: null });
+  useEffect(() => {
+    localStorage.setItem("TIC_session", JSON.stringify(loggedIn));
+  }, [loggedIn]);
+
   return (
     <>
       <Header state={loggedIn} setState={setLoggedIn} />
