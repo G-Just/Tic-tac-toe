@@ -1,13 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRef } from "react";
 
 export function Canvas() {
   const ref = useRef();
 
   function getRandomInt(min, max) {
+    //The maximum is exclusive and the minimum is inclusive
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    return Math.floor(Math.random() * (max - min) + min);
   }
 
   class Vertex {
@@ -92,7 +93,7 @@ export function Canvas() {
 
   //creating the objects
   let requestId;
-  let dotCount = 350;
+  let dotCount = 350; // Vertex count
   let dots = [];
   let horiz = true;
   function addDots() {
@@ -112,7 +113,7 @@ export function Canvas() {
     if (!requestId) {
       setTimeout(() => {
         requestId = window.requestAnimationFrame(addDots);
-      }, 1000 / 30);
+      }, 1000 / 100); // what speed the vertexes come in (per second)
     }
   }
 
