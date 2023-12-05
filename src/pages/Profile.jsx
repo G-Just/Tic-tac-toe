@@ -63,14 +63,7 @@ export function Profile({ data, state }) {
         fluid={"md"}
       >
         <Row>
-          <Col
-            sm={6}
-            md={6}
-            xl={4}
-            style={{
-              borderRight: "5px solid white",
-            }}
-          >
+          <Col md={12} xl={4} className="profile-left">
             <Row className="justify-content-center p-3 ">
               <Col md={6}>
                 <Image src={Pfp} fluid roundedCircle />

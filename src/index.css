@@ -52,8 +52,26 @@ body {
   text-align: center;
 }
 
+.profile-left {
+  border-right: 5px solid white;
+}
+
 #canvas {
   outline: 3px solid white;
   z-index: -1;
   background: black;
+}
+
+@media (max-width: 1199px) {
+  .profile-left {
+    border: none;
+  }
+}
+@media (max-width: 475px) {
+  .profile-table td {
+    padding: 5px 10px;
+    font-size: 1em;
+    outline: 1px solid white;
+    text-align: center;
+  }
 }
