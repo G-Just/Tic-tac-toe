@@ -3,6 +3,13 @@
   cursor: help;
 }
 
+.tooltipbig {
+  position: absolute;
+  top: 250% !important;
+  left: -2% !important;
+  cursor: help;
+}
+
 .tooltip .tooltiptext {
   visibility: hidden;
   background-color: rgb(33, 29, 46);
@@ -18,6 +25,24 @@
   padding: 10px;
 }
 
-.tooltip:hover .tooltiptext {
+.tooltipbig .tooltiptextbig {
+  visibility: hidden;
+  background-color: rgb(33, 29, 46);
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(10%, 50%);
+  padding: 10px;
+  width: 430px;
+  text-align: start;
+}
+
+.tooltip:hover .tooltiptext,
+.tooltipbig:hover .tooltiptextbig {
   visibility: visible;
 }

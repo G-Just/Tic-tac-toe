@@ -72,22 +72,55 @@ export function Badges({ user }) {
     assignBadges();
   }, []);
   return (
-    <p>
-      {badges?.length > 0
-        ? badges.map((badge, idx) => {
-            return (
-              <Badge
-                key={idx}
-                className={`fs-6 my-1 mx-1 ${Style.tooltip}`}
-                bg={badge[1]}
-              >
-                {badge[0]}
-                <span className={Style.tooltiptext}>{badge[2]}</span>
-              </Badge>
-            );
-          })
-        : "No badges earned yet ..."}
-    </p>
+    <div style={{ position: "relative" }}>
+      <p className={Style.tooltipbig}>
+        ?
+        <span className={Style.tooltiptextbig}>
+          **BADGES**<br></br>
+          <br></br>
+          *Time spent*<br></br>
+          New - new user 0-24h<br></br>
+          Experienced - 24-72h<br></br>
+          Veteran - 72h+<br></br>
+          <br></br>*Defeating very easy AI<br></br>
+          Meany - defeated very easy AI 50 times<br></br>
+          Bully -defeated very easy AI 200 times<br></br>
+          Terrorist - defeated very easy AI 1000times<br></br>
+          <br></br>*Defeating easy AI*<br></br>
+          Beginner - defeated easy AI 50 times<br></br>
+          Intermediate - defeated easy AI 200 times<br></br>
+          Pro - defeated easy AI 1000 times<br></br>
+          <br></br>*Defeating normal AI*<br></br>
+          Formidable - defeated normal AI 50 times<br></br>
+          Grand Master - defeated normal AI 200 times<br></br>
+          Transcended - defeated normal AI 1000 times<br></br>
+          <br></br>*Defeating any AI*<br></br>
+          Casual - defeated any AI 200 times<br></br>
+          Enthusiast - defeated any AI 1000 times<br></br>
+          Devotee - defeated any AI 5000 times<br></br>
+          <br></br>*Losses*<br></br>
+          Taste of defeat - lose 50 times<br></br>
+          Bloody - lose 200 times<br></br>
+          Masochist - lose 700 times
+        </span>
+      </p>
+      <p>
+        {badges?.length > 0
+          ? badges.map((badge, idx) => {
+              return (
+                <Badge
+                  key={idx}
+                  className={`fs-6 my-1 mx-1 ${Style.tooltip}`}
+                  bg={badge[1]}
+                >
+                  {badge[0]}
+                  <span className={Style.tooltiptext}>{badge[2]}</span>
+                </Badge>
+              );
+            })
+          : "No badges earned yet ..."}
+      </p>
+    </div>
   );
 }
 
